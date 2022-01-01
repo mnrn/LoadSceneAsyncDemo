@@ -23,8 +23,8 @@ namespace Scenes.Title
 
         public void OnClicked()
         {
-            loadSceneAsync.GetComponent<Async.LoadSceneAsyncCoro>()
-                .LoadSceneCoro("SceneGameMain");
+            loadSceneAsync.GetComponent<Async.LoadSceneAsync>()
+                .LoadScene("SceneGameMain");
         }
     }
 }

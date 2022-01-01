@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Async
 {
-    public class LoadSceneAsyncCoro : MonoBehaviour
+    public class LoadSceneAsync : MonoBehaviour
     {
         [SerializeField] private GameObject canvas;
         [SerializeField] private Slider slider;
@@ -24,12 +24,12 @@ namespace Async
 
         }
 
-        public void LoadSceneCoro(string scene)
+        public void LoadScene(string scene)
         {
-            StartCoroutine(LoadSceneCoroExec(scene));
+            StartCoroutine(LoadSceneCoro(scene));
         }
 
-        IEnumerator LoadSceneCoroExec(string scene)
+        IEnumerator LoadSceneCoro(string scene)
         {
             slider.value = 0.0f;
             canvas.SetActive(true);
