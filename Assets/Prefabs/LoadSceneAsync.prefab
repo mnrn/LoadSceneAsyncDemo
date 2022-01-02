@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2923792847722243348}
   - component: {fileID: 2923792847722243350}
   - component: {fileID: 2923792847722243351}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2923792847860487099}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2923792848590675341}
   - component: {fileID: 2923792848590675340}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: LoadSceneAsync
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2923792848590675338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4ec579b2e30436eac229039e03c447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2923792848628300399}
+  loadCanvas: {fileID: 2923792848628300399}
   slider: {fileID: 2923792849207109729}
 --- !u!1 &2923792848616293435
 GameObject:
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 2923792848616293434}
   - component: {fileID: 2923792848616293436}
   - component: {fileID: 2923792848616293437}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 2923792848628300400}
   - component: {fileID: 2923792848628300401}
   - component: {fileID: 2923792848628300398}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: LoadScreenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1500
   m_TargetDisplay: 0
 --- !u!114 &2923792848628300401
 MonoBehaviour:
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2923792848692052772}
   - component: {fileID: 2923792848692052774}
   - component: {fileID: 2923792848692052775}
-  m_Layer: 5
+  m_Layer: 25
   m_Name: LoadingText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2923792849207109726}
   - component: {fileID: 2923792849207109729}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: LoadProgressSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 5638082001494648803}
   - component: {fileID: 5638082001494648829}
   - component: {fileID: 5638082001494648828}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: LoadScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

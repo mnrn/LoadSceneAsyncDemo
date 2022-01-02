@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d4f65931b8845a6b6dcb236cdc820f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneAsync: {fileID: 7398600205341071110}
+  loadSceneAsync: {fileID: 3280710338734575019}
 --- !u!1 &1322347439
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,7 +944,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &3945794657784132159
+--- !u!1 &3280710338734575019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2923792848590675338, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
+  m_PrefabInstance: {fileID: 6092201485488158661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6092201485488158661
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -977,15 +982,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2923792848590675341, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2923792848590675341, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2923792848590675341, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2923792848590675341, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1001,8 +1006,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
---- !u!1 &7398600205341071110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2923792848590675338, guid: 258f2379568e14677999cdea02dbbac3, type: 3}
-  m_PrefabInstance: {fileID: 3945794657784132159}
-  m_PrefabAsset: {fileID: 0}

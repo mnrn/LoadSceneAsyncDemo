@@ -9,8 +9,9 @@ namespace Async
 {
     public class LoadSceneAsync : MonoBehaviour
     {
-        [SerializeField] private GameObject canvas;
-        [SerializeField] private Slider slider;
+        //[SerializeField] private GameObject gameCanvasGroup = default;
+        [SerializeField] private GameObject loadCanvas = default;
+        [SerializeField] private Slider slider = default;
 
         // Start is called before the first frame update
         void Start()
@@ -32,7 +33,7 @@ namespace Async
         IEnumerator LoadSceneCoro(string scene)
         {
             slider.value = 0.0f;
-            canvas.SetActive(true);
+            loadCanvas.SetActive(true);
             yield return new WaitForSeconds(1f);
 
             // ロードを開始します
@@ -50,14 +51,13 @@ namespace Async
 
                 if (asyncOp.progress >= 0.9f)
                 {
-                    slider.value = 1.0f;
                     break;
                 }
             }
 
+            slider.value = 1.0f;
             yield return new WaitForSeconds(1f);
             asyncOp.allowSceneActivation = true;
-            canvas.SetActive(false);
         }
     }
 }

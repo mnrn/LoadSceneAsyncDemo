@@ -7,7 +7,7 @@ namespace Scenes.Title
 {
     public class GameStartButton : MonoBehaviour
     {
-        [SerializeField] private GameObject loadSceneAsync;
+        [SerializeField] private GameObject loadSceneAsync = default;
 
         // Start is called before the first frame update
         void Start()

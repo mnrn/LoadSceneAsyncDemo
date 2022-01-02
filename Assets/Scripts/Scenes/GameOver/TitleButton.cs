@@ -7,6 +7,8 @@ namespace Scenes.GameOver
 {
     public class TitleButton : MonoBehaviour
     {
+        [SerializeField] private GameObject loadSceneAsync = default;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -21,7 +23,8 @@ namespace Scenes.GameOver
 
         public void OnClick()
         {
-            SceneManager.LoadScene("SceneTitle");
+            loadSceneAsync.GetComponent<Async.LoadSceneAsync>()
+                .LoadScene("SceneTitle");
         }
     }
 }
