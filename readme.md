@@ -11,6 +11,8 @@ UnityにおけるLoadSceneAsyncのデモプロジェクトです。
   - [Unity Companion License](https://docs.unity3d.com/ja/Packages/com.unity.textmeshpro@3.0/license/LICENSE.html)
 - [DOTween]
   - [DOTween License](http://dotween.demigiant.com/license.php)
+- [UniTask]
+  - [MIT License](https://github.com/Cysharp/UniTask/blob/master/LICENSE)
 
 ## Fonts
 
@@ -25,3 +27,4 @@ UnityにおけるLoadSceneAsyncのデモプロジェクトです。
 
 [TextMesh Pro]:<https://docs.unity3d.com/ja/2019.4/Manual/com.unity.textmeshpro.html>
 [DOTween]:<http://dotween.demigiant.com/>
+[UniTask]:<https://github.com/Cysharp/UniTask>
