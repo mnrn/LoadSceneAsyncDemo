@@ -24,6 +24,10 @@ public class SceneExit : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// シーン出口状態実行
+    /// </summary>
+    /// <returns></returns>
     public DG.Tweening.Core.TweenerCore<Color, Color, DG.Tweening.Plugins.Options.ColorOptions> Exec()
     {
         // まずはキャンバスを使えるようにする。

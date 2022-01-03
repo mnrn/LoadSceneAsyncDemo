@@ -20,6 +20,10 @@ public class SceneTransducer : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// シーンの遷移を行います。
+    /// </summary>
+    /// <param name="nextScene">遷移先のシーン名</param>
     public void Exec(string nextScene)
     {
         // シーンはSceneExit状態となりシーンのロードを行います。

@@ -27,12 +27,22 @@ public class LoadSceneAsync : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 非同期によるシーンのロードを行います。
+    /// </summary>
+    /// <param name="scene">ロードするシーン名</param>
     public void Exec(string scene)
     {
         ExecTask(scene, this.GetCancellationTokenOnDestroy())
             .Forget();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="scene">ロードするシーン名</param>
+    /// <param name="token">非同期処理キャンセル用トークン</param>
+    /// <returns></returns>
     private async UniTask ExecTask(string scene, CancellationToken token)
     {
         slider.value = 0.0f;
@@ -49,6 +59,11 @@ public class LoadSceneAsync : MonoBehaviour
         asyncOp.allowSceneActivation = true;
     }
 
+    /// <summary>
+    /// 非同期によるシーンのロードを行い、対象シーンを非アクティブとします。
+    /// </summary>
+    /// <param name="scene">ロードするシーン名</param>
+    /// <returns></returns>
     private AsyncOperation LoadSceneAsyncWithInactivation(string scene)
     {
         var asyncOp = SceneManager.LoadSceneAsync(scene);
@@ -58,6 +73,12 @@ public class LoadSceneAsync : MonoBehaviour
         return asyncOp;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="asyncOp"></param>
+    /// <param name="token">非同期処理キャンセル用トークン</param>
+    /// <returns></returns>
     private async UniTask Loading(AsyncOperation asyncOp, CancellationToken token)
     {
         do
