@@ -27,32 +27,8 @@ public class LoadSceneAsync : MonoBehaviour
 
     public void Exec(string scene)
     {
-        /**
-        StartCoroutine(ExecCoro(scene));
-        /*/
         ExecTask(scene, this.GetCancellationTokenOnDestroy())
             .Forget();
-        /**/
-    }
-
-    private IEnumerator ExecCoro(string scene)
-    {
-        Init();
-        yield return new WaitForSeconds(1f);
-
-        // ロードを開始します。
-        var asyncOp = LoadSceneAsyncWithInactivation(scene);
-
-        // ロードが9割型完了するまで待つ。
-        do
-        {
-            yield return null;
-            SliderUpdate(asyncOp);
-        } while (asyncOp.progress < 0.9f);
-
-        SliderEnd();
-        yield return new WaitForSeconds(1f);
-        asyncOp.allowSceneActivation = true;
     }
 
     private async UniTask ExecTask(string scene, CancellationToken token)
