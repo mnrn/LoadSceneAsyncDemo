@@ -13,6 +13,8 @@ public class LoadSceneAsync : MonoBehaviour
     [SerializeField] private GameObject canvas = default;
     [SerializeField] private Slider slider = default;
 
+    readonly private double delay = 1.0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,47 +35,39 @@ public class LoadSceneAsync : MonoBehaviour
 
     private async UniTask ExecTask(string scene, CancellationToken token)
     {
-        Init();
-        await UniTask.Delay(TimeSpan.FromSeconds(1.0f), cancellationToken: token);
+        slider.value = 0.0f;
+        canvas.SetActive(true);
+        await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: token);
 
         // ロードを開始します。
         var asyncOp = LoadSceneAsyncWithInactivation(scene);
 
-        // ロードが9割型完了するまで待つ。
-        do
-        {
-            await UniTask.Yield(token);
-            SliderUpdate(asyncOp);
-        } while (asyncOp.progress < 0.9f);
+        // ロードが完了するまで待ちます。
+        await Loading(asyncOp, token);
 
-        SliderEnd();
-        await UniTask.Delay(TimeSpan.FromSeconds(1.0f), cancellationToken: token);
+        await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: token);
         asyncOp.allowSceneActivation = true;
-    }
-
-    private void Init()
-    {
-        slider.value = 0.0f;
-        canvas.SetActive(true);
     }
 
     private AsyncOperation LoadSceneAsyncWithInactivation(string scene)
     {
         var asyncOp = SceneManager.LoadSceneAsync(scene);
-        asyncOp.allowSceneActivation = false; // OKするまでシーンをアクティブにしません。
+        asyncOp.allowSceneActivation = false; // 許可するまでシーンをアクティブにしません。
         Debug.Log("Progress :" + asyncOp.progress);
 
         return asyncOp;
     }
 
-    private void SliderUpdate(AsyncOperation asyncOp)
+    private async UniTask Loading(AsyncOperation asyncOp, CancellationToken token)
     {
-        slider.value = asyncOp.progress;
-        Debug.Log("Progress :" + asyncOp.progress);
-    }
+        do
+        {
+            await UniTask.Yield(token);
 
-    private void SliderEnd()
-    {
+            slider.value = asyncOp.progress;
+            Debug.Log("Progress :" + asyncOp.progress);
+        } while (asyncOp.progress < 0.9f);
+
         slider.value = 1.0f;
-    }
+    }    
 }
