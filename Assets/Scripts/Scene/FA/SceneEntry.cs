@@ -9,6 +9,7 @@ public class SceneEntry : MonoBehaviour
     [SerializeField] private GameObject canvas = default;
     [SerializeField] private GameObject screen = default;
     [SerializeField] private float fadeDuration = 1.5f;
+    [SerializeField] private Ease easeType = Ease.InCubic;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class SceneEntry : MonoBehaviour
         // 黒画面からフェードアウトします。
         var image = screen.GetComponent<Image>();
         image.DOFade(endValue: 0.0f, duration: fadeDuration)
+            .SetEase(easeType)
             .OnComplete(() => canvas.SetActive(false));
     }
 
