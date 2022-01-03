@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 
 public class LoadSceneAsync : MonoBehaviour
 {
-    //[SerializeField] private GameObject gameCanvasGroup = default;
-    [SerializeField] private GameObject loadCanvas = default;
+    [SerializeField] private GameObject canvas = default;
     [SerializeField] private Slider slider = default;
 
     // Start is called before the first frame update
@@ -24,38 +25,79 @@ public class LoadSceneAsync : MonoBehaviour
 
     }
 
-    public void LoadScene(string scene)
+    public void Exec(string scene)
     {
-        StartCoroutine(LoadSceneCoro(scene));
+        /**
+        StartCoroutine(ExecCoro(scene));
+        /*/
+        ExecTask(scene, this.GetCancellationTokenOnDestroy())
+            .Forget();
+        /**/
     }
 
-    IEnumerator LoadSceneCoro(string scene)
+    private IEnumerator ExecCoro(string scene)
     {
-        slider.value = 0.0f;
-        loadCanvas.SetActive(true);
+        Init();
         yield return new WaitForSeconds(1f);
 
-        // ロードを開始します
-        var asyncOp = SceneManager.LoadSceneAsync(scene);
+        // ロードを開始します。
+        var asyncOp = LoadSceneAsyncWithInactivation(scene);
 
-        // OKするまでシーンをアクティブにしません
-        asyncOp.allowSceneActivation = false;
-        Debug.Log("Progress :" + asyncOp.progress);
-
-        while (true)
+        // ロードが9割型完了するまで待つ。
+        do
         {
             yield return null;
-            slider.value = asyncOp.progress;
-            Debug.Log("Progress :" + asyncOp.progress);
+            SliderUpdate(asyncOp);
+        } while (asyncOp.progress < 0.9f);
 
-            if (asyncOp.progress >= 0.9f)
-            {
-                break;
-            }
-        }
-
-        slider.value = 1.0f;
+        SliderEnd();
         yield return new WaitForSeconds(1f);
         asyncOp.allowSceneActivation = true;
+    }
+
+    private async UniTask ExecTask(string scene, CancellationToken token)
+    {
+        Init();
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f), cancellationToken: token);
+
+        // ロードを開始します。
+        var asyncOp = LoadSceneAsyncWithInactivation(scene);
+
+        // ロードが9割型完了するまで待つ。
+        do
+        {
+            await UniTask.Yield(token);
+            SliderUpdate(asyncOp);
+        } while (asyncOp.progress < 0.9f);
+
+        SliderEnd();
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f), cancellationToken: token);
+        asyncOp.allowSceneActivation = true;
+    }
+
+    private void Init()
+    {
+        slider.value = 0.0f;
+        canvas.SetActive(true);
+    }
+
+    private AsyncOperation LoadSceneAsyncWithInactivation(string scene)
+    {
+        var asyncOp = SceneManager.LoadSceneAsync(scene);
+        asyncOp.allowSceneActivation = false; // OKするまでシーンをアクティブにしません。
+        Debug.Log("Progress :" + asyncOp.progress);
+
+        return asyncOp;
+    }
+
+    private void SliderUpdate(AsyncOperation asyncOp)
+    {
+        slider.value = asyncOp.progress;
+        Debug.Log("Progress :" + asyncOp.progress);
+    }
+
+    private void SliderEnd()
+    {
+        slider.value = 1.0f;
     }
 }

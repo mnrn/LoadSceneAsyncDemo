@@ -92,18 +92,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4603819924895684053, guid: 9f75fcf50a3ba4dd885ff5370c4acd6a, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6433698263874106899, guid: 9f75fcf50a3ba4dd885ff5370c4acd6a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6433698263895394392, guid: 9f75fcf50a3ba4dd885ff5370c4acd6a, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f75fcf50a3ba4dd885ff5370c4acd6a, type: 3}
 --- !u!4 &122171222553752823 stripped
@@ -166,10 +154,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2871445327855146981, guid: eae38054a877244b7840902cb6874c67, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eae38054a877244b7840902cb6874c67, type: 3}
 --- !u!4 &122171222137452233 stripped
@@ -184,10 +168,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122171221567419470}
     m_Modifications:
-    - target: {fileID: 7846561968841248012, guid: 10af0508280df439591564afd46209e2, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 7846561968890219961, guid: 10af0508280df439591564afd46209e2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -235,10 +215,6 @@ PrefabInstance:
     - target: {fileID: 7846561968890219963, guid: 10af0508280df439591564afd46209e2, type: 3}
       propertyPath: m_Name
       value: SceneExit
-      objectReference: {fileID: 0}
-    - target: {fileID: 7846561969520399161, guid: 10af0508280df439591564afd46209e2, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10af0508280df439591564afd46209e2, type: 3}

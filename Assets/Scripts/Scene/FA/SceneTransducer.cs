@@ -22,11 +22,12 @@ public class SceneTransducer : MonoBehaviour
 
     public void Exec(string nextScene)
     {
+        // シーンはSceneExit状態となりシーンのロードを行います。
         sceneExit.GetComponent<SceneExit>()
             .Exec()
             .OnComplete(() => {
                 loadSceneAsync.GetComponent<LoadSceneAsync>()
-                    .LoadScene(nextScene);
+                    .Exec(nextScene);
             });
     }
 }
