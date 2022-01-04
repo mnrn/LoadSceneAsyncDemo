@@ -1,0 +1,15 @@
+@startuml scene
+hide empty description
+title シーン遷移図
+[*] -down-> Title
+
+Title -right-> GameMain
+GameMain -left-> Title
+GameMain -down-> GameOver
+GameOver -down-> Title
+
+Title : タイトルシーン
+GameMain : ゲームメインシーン
+GameOver : ゲームオーバーシーン
+
+@enduml

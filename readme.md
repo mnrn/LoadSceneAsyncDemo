@@ -2,6 +2,12 @@
 
 UnityにおけるLoadSceneAsyncのデモプロジェクトです。
 
+## Scene Transition
+
+シーン遷移図は以下のようになります。
+
+![SceneTransition](https://github.com/mnrn/LoadSceneAsyncDemo/blob/main/Docs/Images/scene.png)
+
 ## Assets Dependency
 
 使用しているアセットは以下になります。  

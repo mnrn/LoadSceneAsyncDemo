@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 # Remove vsconfig
 *.vsconfig
+
+# Exclude vscode default out path
+/out/
