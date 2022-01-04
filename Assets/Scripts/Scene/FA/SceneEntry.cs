@@ -9,7 +9,7 @@ public class SceneEntry : MonoBehaviour
     [SerializeField] private GameObject canvas = default;
     [SerializeField] private GameObject screen = default;
     [SerializeField] private float fadeDuration = 1.5f;
-    [SerializeField] private Ease easeType = Ease.InCubic;
+    [SerializeField] private Ease easeType = Ease.InOutCubic;
 
     // Start is called before the first frame update
     void Start()
