@@ -147,6 +147,7 @@ MonoBehaviour:
   canvas: {fileID: 2871445326379247907}
   screen: {fileID: 2871445327855146983}
   fadeDuration: 1.5
+  easeType: 8
 --- !u!1 &2871445327855146983
 GameObject:
   m_ObjectHideFlags: 0
