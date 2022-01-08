@@ -12,7 +12,7 @@ public class LoadSceneAsync : MonoBehaviour
 #nullable enable
     [SerializeField] private GameObject? canvas = default;
     [SerializeField] private Slider? slider = default;
-#nullable disable
+#nullable restore
 
     readonly private double delay = 1.0;
 
@@ -54,7 +54,7 @@ public class LoadSceneAsync : MonoBehaviour
     /// <param name="scene">ロードするシーン名</param>
     /// <param name="token">非同期処理キャンセル用トークン</param>
     /// <returns></returns>
-    public async UniTask ExecTask(string scene, CancellationToken token)
+    public async UniTask<Scene> ExecTask(string scene, CancellationToken token)
     {
         UpdateSlider(slider, 0.0f);
         canvas?.SetActive(true);
@@ -72,6 +72,7 @@ public class LoadSceneAsync : MonoBehaviour
         {
             await UniTask.Yield(token);
         }
+        return SceneManager.GetActiveScene();
     }
 
     /// <summary>
@@ -117,5 +118,5 @@ public class LoadSceneAsync : MonoBehaviour
         }
         slider!.value = v;
     }
-#nullable disable
+#nullable restore
 }

@@ -28,11 +28,11 @@ public class SceneTransitionTest
     public IEnumerator LoadScenAsyncTest() => UniTask.ToCoroutine(async () => {
         //await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
 
-        await loadSceneAsync.ExecTask("GameMain", cancelToken);
+        var scene = await loadSceneAsync.ExecTask("GameMain", cancelToken);
 
         //await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
 
-        Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("GameMain"));
+        Assert.That(scene.name, Is.EqualTo("GameMain"));
     });
 
     [TearDown]
