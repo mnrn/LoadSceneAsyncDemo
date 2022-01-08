@@ -43,7 +43,7 @@ public class LoadSceneAsync : MonoBehaviour
     /// </summary>
     /// <param name="scene">ロードするシーン名</param>
     /// <returns></returns>
-    public UniTask ExecTask(string scene)
+    public UniTask<Scene> ExecTask(string scene)
     {
         return ExecTask(scene, this.GetCancellationTokenOnDestroy());
     }

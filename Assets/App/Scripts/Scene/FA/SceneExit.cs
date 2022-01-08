@@ -36,6 +36,7 @@ public class SceneExit : MonoBehaviour
         // 黒画面へフェードインします。
         return screen.GetComponent<Image>()
             .DOFade(endValue: 1.0f, duration: fadeDuration)
-            .SetEase(easeType);
+            .SetEase(easeType)
+            .OnComplete(() => canvas.SetActive(false));
     }
 }
