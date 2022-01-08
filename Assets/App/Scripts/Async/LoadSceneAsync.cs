@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 
-
 public class LoadSceneAsync : MonoBehaviour
 {
-    [SerializeField] private GameObject canvas = default;
-    [SerializeField] private Slider slider = default;
+#nullable enable
+    [SerializeField] private GameObject? canvas = default;
+    [SerializeField] private Slider? slider = default;
+#nullable disable
 
     readonly private double delay = 1.0;
 
@@ -33,8 +34,18 @@ public class LoadSceneAsync : MonoBehaviour
     /// <param name="scene">ロードするシーン名</param>
     public void Exec(string scene)
     {
-        ExecTask(scene, this.GetCancellationTokenOnDestroy())
+        ExecTask(scene)
             .Forget();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="scene">ロードするシーン名</param>
+    /// <returns></returns>
+    public UniTask ExecTask(string scene)
+    {
+        return ExecTask(scene, this.GetCancellationTokenOnDestroy());
     }
 
     /// <summary>
@@ -43,10 +54,10 @@ public class LoadSceneAsync : MonoBehaviour
     /// <param name="scene">ロードするシーン名</param>
     /// <param name="token">非同期処理キャンセル用トークン</param>
     /// <returns></returns>
-    private async UniTask ExecTask(string scene, CancellationToken token)
+    public async UniTask ExecTask(string scene, CancellationToken token)
     {
-        slider.value = 0.0f;
-        canvas.SetActive(true);
+        UpdateSlider(slider, 0.0f);
+        canvas?.SetActive(true);
         await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: token);
 
         // ロードを開始します。
@@ -57,6 +68,10 @@ public class LoadSceneAsync : MonoBehaviour
 
         await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: token);
         asyncOp.allowSceneActivation = true;
+        while (!asyncOp.isDone)
+        {
+            await UniTask.Yield(token);
+        }
     }
 
     /// <summary>
@@ -85,10 +100,22 @@ public class LoadSceneAsync : MonoBehaviour
         {
             await UniTask.Yield(token);
 
-            slider.value = asyncOp.progress;
+            //slider.value = asyncOp.progress;
+            UpdateSlider(slider, asyncOp.progress);
             Debug.Log("Progress :" + asyncOp.progress);
         } while (asyncOp.progress < 0.9f);
 
-        slider.value = 1.0f;
-    }    
+        UpdateSlider(slider, 1.0f);
+    }
+
+#nullable enable
+    private void UpdateSlider(Slider? slider, float v)
+    {
+        if (slider is null)
+        {
+            return;
+        }
+        slider!.value = v;
+    }
+#nullable disable
 }
